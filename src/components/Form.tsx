@@ -2,8 +2,13 @@ import React, {ChangeEvent, MouseEvent, useState} from "react";
 import Input from "./Input";
 import Button from "./Button";
 import Select from "./Select";
+import {CardProps} from "./Card";
 
-const Form: React.FC = () => {
+interface FormProps {
+    setCardInfo: React.Dispatch<React.SetStateAction<CardProps[]>>;
+}
+
+const Form: React.FC<FormProps> = ({setCardInfo}) => {
     const [stadiumName, setStadiumName] = useState<string>("");
     const [city, setCity] = useState<string>("");
     const [capacity, setCapacity] = useState<string>("");
@@ -17,6 +22,12 @@ const Form: React.FC = () => {
     const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
     const specialCharsAndNumbers = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~\d]/;
     const positiveIntegerPattern = /^\d+$/;
+
+    const removeCard = (id: string) => {
+        setCardInfo((prevCardInfo) =>
+            prevCardInfo.filter((card) => card.id !== id)
+        );
+    };
 
     const handleStadiumNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -38,9 +49,7 @@ const Form: React.FC = () => {
         if (specialCharsAndNumbers.test(value)) {
             setCityError("This field must contain only letters");
         } else if (value.length > 40) {
-            setStadiumNameError(
-                "The field length must be less than 40 characters"
-            );
+            setCityError("The field length must be less than 40 characters");
         } else {
             setCityError("");
         }
@@ -120,9 +129,21 @@ const Form: React.FC = () => {
     const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         const isFormValid = formValidation();
-        console.log(isFormValid);
         if (isFormValid) {
-            /* empty */
+            const newCard: CardProps = {
+                stadiumName: stadiumName,
+                city: city,
+                capacity: capacity,
+                fieldType: fieldType,
+                id: Date.now().toString(),
+                onClick: (id) => removeCard(id),
+            };
+
+            setCardInfo((prevCardInfo) => [newCard, ...prevCardInfo]);
+            setStadiumName("");
+            setCity("");
+            setCapacity("");
+            setFieldType("");
         }
     };
 
@@ -134,6 +155,7 @@ const Form: React.FC = () => {
 
     return (
         <div className="form-container">
+            <h2>Stadium form</h2>
             <form className="stadium-form">
                 <div className="input-container">
                     <label htmlFor="stadium-name">Stadium:</label>
