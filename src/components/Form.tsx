@@ -95,31 +95,30 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     };
 
     const formValidation = () => {
-        let isValid = true;
+        let isValid = false;
         if (!stadiumName) {
             setStadiumNameError(stadiumName || "This field cannot be empty");
-            isValid = false;
         }
         if (!city) {
             setCityError(city || "This field cannot be empty");
-            isValid = false;
         }
         if (!capacity) {
             setCapacityError(
                 capacity || "This field must contain positive integers"
             );
-            isValid = false;
         }
         if (!fieldType) {
             setFieldTypeError(fieldType || "Please select an option");
-            isValid = false;
         }
 
         if (!isValid) {
-            if (stadiumNameError) stadiumNameRef.current?.focus();
-            else if (cityError) cityRef.current?.focus();
-            else if (capacityError) capacityRef.current?.focus();
-            else if (fieldTypeError) fieldTypeRef.current?.focus();
+            if (stadiumNameError || !stadiumName)
+                stadiumNameRef.current?.focus();
+            else if (cityError || !city) cityRef.current?.focus();
+            else if (capacityError || !capacity) capacityRef.current?.focus();
+            else if (fieldTypeError || !fieldType)
+                fieldTypeRef.current?.focus();
+            else isValid = true;
         }
 
         return isValid;
