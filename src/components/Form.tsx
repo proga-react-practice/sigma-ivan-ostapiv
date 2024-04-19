@@ -176,7 +176,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         type="text"
                         id="city"
                         name="city"
-                        className="input"
+                        className="stadium-input"
                         placeholder="Enter city"
                         value={city}
                         onChange={handleCityChange}

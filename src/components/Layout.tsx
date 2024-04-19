@@ -7,7 +7,7 @@ const Layout: React.FC = () => {
     const [cards, setCards] = useState<CardProps[]>([]);
 
     return (
-        <div>
+        <div className="layout-container">
             <Form setCardInfo={setCards} />
             <CardList cards={cards} />
         </div>
