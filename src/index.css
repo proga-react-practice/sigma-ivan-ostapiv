@@ -86,3 +86,53 @@ h2 {
     justify-content: space-evenly;
     margin-top: 20px;
 }
+
+.card-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #009879;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f0f8ff;
+    box-shadow: 10px 7px 10px #20a78c;
+    transition: box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+.card-container:hover {
+    box-shadow: 0px 0px 20px #20a78c;
+}
+.card-item {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #01473f;
+}
+
+.card-button {
+    margin-top: 0px;
+    justify-content: flex-start;
+}
+
+.card-button button {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #009879;
+    border: 2px solid #009879;
+    color: azure;
+    cursor: pointer;
+}
+
+.card-button button:hover {
+    background-color: #10776b;
+    border-color: #10776b;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
