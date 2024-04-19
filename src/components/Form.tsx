@@ -139,10 +139,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
             };
 
             setCardInfo((prevCardInfo) => [newCard, ...prevCardInfo]);
-            setStadiumName("");
-            setCity("");
-            setCapacity("");
-            setFieldType("");
+            handleFormReset();
         }
     };
 
