@@ -1,4 +1,4 @@
-import React, {ChangeEvent, MouseEvent, useState} from "react";
+import React, {ChangeEvent, MouseEvent, useState, useRef} from "react";
 import Input from "./Input";
 import Button from "./Button";
 import Select from "./Select";
@@ -19,6 +19,11 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     const [capacityError, setCapacityError] = useState<string>("");
     const [fieldTypeError, setFieldTypeError] = useState<string>("");
 
+    const stadiumNameRef = useRef<HTMLInputElement>(null);
+    const cityRef = useRef<HTMLInputElement>(null);
+    const capacityRef = useRef<HTMLInputElement>(null);
+    const fieldTypeRef = useRef<HTMLSelectElement>(null);
+
     const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
     const specialCharsAndNumbers = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~\d]/;
     const positiveIntegerPattern = /^\d+$/;
@@ -32,7 +37,9 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     const handleStadiumNameChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setStadiumName(value);
-        if (specialChars.test(value)) {
+        if (value.trim() === "") {
+            setStadiumNameError("This field cannot be empty");
+        } else if (specialChars.test(value)) {
             setStadiumNameError("This field cannot contain special chars");
         } else if (value.length > 40) {
             setStadiumNameError(
@@ -46,7 +53,9 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     const handleCityChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setCity(value);
-        if (specialCharsAndNumbers.test(value)) {
+        if (value.trim() === "") {
+            setCityError("This field cannot be empty");
+        } else if (specialCharsAndNumbers.test(value)) {
             setCityError("This field must contain only letters");
         } else if (value.length > 40) {
             setCityError("The field length must be less than 40 characters");
@@ -86,49 +95,40 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     };
 
     const formValidation = () => {
-        if (fieldType.trim() === "") {
-            setFieldTypeError("Please select an option");
-            document.getElementById("field-type")?.focus();
+        let isValid = true;
+        if (!stadiumName) {
+            setStadiumNameError(stadiumName || "This field cannot be empty");
+            isValid = false;
         }
-        if (capacity.trim() === "") {
-            setCapacityError("This field must contain positive integers");
-            document.getElementById("capacity")?.focus();
+        if (!city) {
+            setCityError(city || "This field cannot be empty");
+            isValid = false;
         }
-        if (city.trim() === "") {
-            setCityError("This field cannot be empty");
-            document.getElementById("city")?.focus();
+        if (!capacity) {
+            setCapacityError(
+                capacity || "This field must contain positive integers"
+            );
+            isValid = false;
         }
-        if (stadiumName.trim() === "") {
-            setStadiumNameError("This field cannot be empty");
-            document.getElementById("stadium-name")?.focus();
+        if (!fieldType) {
+            setFieldTypeError(fieldType || "Please select an option");
+            isValid = false;
         }
-        if (
-            stadiumNameError ||
-            cityError ||
-            capacityError ||
-            fieldTypeError ||
-            fieldType.trim() === "" ||
-            capacity.trim() === "" ||
-            city.trim() === "" ||
-            stadiumName.trim() === ""
-        ) {
-            if (stadiumNameError) {
-                document.getElementById("stadium-name")?.focus();
-            } else if (cityError) {
-                document.getElementById("city")?.focus();
-            } else if (capacityError) {
-                document.getElementById("capacity")?.focus();
-            } else if (fieldTypeError) {
-                document.getElementById("field-type")?.focus();
-            }
-            return false;
+
+        if (!isValid) {
+            if (stadiumNameError) stadiumNameRef.current?.focus();
+            else if (cityError) cityRef.current?.focus();
+            else if (capacityError) capacityRef.current?.focus();
+            else if (fieldTypeError) fieldTypeRef.current?.focus();
         }
-        return true;
+
+        return isValid;
     };
 
     const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         const isFormValid = formValidation();
+
         if (isFormValid) {
             const newCard: CardProps = {
                 stadiumName: stadiumName,
@@ -166,6 +166,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         className="stadium-input"
                         placeholder="Enter stadium name"
                         value={stadiumName}
+                        inputRef={stadiumNameRef}
                         onChange={handleStadiumNameChange}
                     />
                     <div className="error-message">{stadiumNameError}</div>
@@ -179,6 +180,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         className="stadium-input"
                         placeholder="Enter city"
                         value={city}
+                        inputRef={cityRef}
                         onChange={handleCityChange}
                     />
                     <div className="error-message">{cityError}</div>
@@ -192,6 +194,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         className="stadium-input"
                         placeholder="Enter stadium capacity"
                         value={capacity}
+                        inputRef={capacityRef}
                         onChange={handleCapacityChange}
                     />
                     <div className="error-message">{capacityError}</div>
@@ -205,6 +208,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         placeholder="Choose type"
                         options={fieldTypeOptions}
                         onChange={handleFieldTypeChange}
+                        selectRef={fieldTypeRef}
                         value={fieldType}
                     />
                     <div className="error-message">{fieldTypeError}</div>

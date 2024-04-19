@@ -7,12 +7,18 @@ interface SelectProps {
     className?: string;
     id?: string;
     name?: string;
+    selectRef?: React.Ref<HTMLSelectElement>;
     onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const Select: React.FC<SelectProps> = ({options, placeholder, ...props}) => {
+const Select: React.FC<SelectProps> = ({
+    options,
+    placeholder,
+    selectRef,
+    ...props
+}) => {
     return (
-        <select {...props}>
+        <select ref={selectRef} {...props}>
             <option value="" hidden>
                 {placeholder}
             </option>
