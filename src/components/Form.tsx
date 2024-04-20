@@ -3,6 +3,11 @@ import Input from "./Input";
 import Button from "./Button";
 import Select from "./Select";
 import {CardProps} from "./Card";
+import {
+    specialChars,
+    specialCharsAndNumbers,
+    positiveIntegerPattern,
+} from "../utils/validationPatterns";
 
 interface FormProps {
     setCardInfo: React.Dispatch<React.SetStateAction<CardProps[]>>;
@@ -23,10 +28,6 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     const cityRef = useRef<HTMLInputElement>(null);
     const capacityRef = useRef<HTMLInputElement>(null);
     const fieldTypeRef = useRef<HTMLSelectElement>(null);
-
-    const specialChars = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/;
-    const specialCharsAndNumbers = /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~\d]/;
-    const positiveIntegerPattern = /^\d+$/;
 
     const removeCard = (id: string) => {
         setCardInfo((prevCardInfo) =>
