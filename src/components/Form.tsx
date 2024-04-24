@@ -8,6 +8,7 @@ import {
     specialCharsAndNumbers,
     positiveIntegerPattern,
 } from "../utils/validationPatterns";
+import {InputLabel} from "@mui/material";
 
 interface FormProps {
     setCardInfo: React.Dispatch<React.SetStateAction<CardProps[]>>;
@@ -155,7 +156,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
             <h2>Stadium form</h2>
             <form className="stadium-form">
                 <div className="input-container">
-                    <label htmlFor="stadium-name">Stadium:</label>
+                    <InputLabel htmlFor="stadium-name">Stadium:</InputLabel>
                     <Input
                         type="text"
                         id="stadium-name"
@@ -169,7 +170,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     <div className="error-message">{stadiumNameError}</div>
                 </div>
                 <div className="input-container">
-                    <label htmlFor="city">City:</label>
+                    <InputLabel htmlFor="city">City:</InputLabel>
                     <Input
                         type="text"
                         id="city"
@@ -183,7 +184,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     <div className="error-message">{cityError}</div>
                 </div>
                 <div className="input-container">
-                    <label htmlFor="capacity">Capacity:</label>
+                    <InputLabel htmlFor="capacity">Capacity:</InputLabel>
                     <Input
                         type="number"
                         id="capacity"
@@ -197,7 +198,9 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     <div className="error-message">{capacityError}</div>
                 </div>
                 <div className="input-container select-container">
-                    <label htmlFor="field-type">Choose field type:</label>
+                    <InputLabel htmlFor="field-type">
+                        Choose field type:
+                    </InputLabel>
                     <Select
                         id="field-type"
                         name="fieldType"
