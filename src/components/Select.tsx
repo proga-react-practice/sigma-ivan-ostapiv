@@ -1,5 +1,6 @@
-import React, {ChangeEvent} from "react";
-
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import MuiSelect, {SelectChangeEvent} from "@mui/material/Select";
 interface SelectProps {
     options: {label: string; value: string | number}[];
     value: string;
@@ -8,26 +9,37 @@ interface SelectProps {
     id?: string;
     name?: string;
     selectRef?: React.Ref<HTMLSelectElement>;
-    onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+    onChange: (e: SelectChangeEvent<string>) => void;
 }
 
 const Select: React.FC<SelectProps> = ({
     options,
+    value,
     placeholder,
+    onChange,
     selectRef,
     ...props
 }) => {
     return (
-        <select ref={selectRef} {...props}>
-            <option value="" hidden>
-                {placeholder}
-            </option>
-            {options.map((option, index) => (
-                <option key={index} value={option.value}>
-                    {option.label}
-                </option>
-            ))}
-        </select>
+        <FormControl fullWidth>
+            <MuiSelect
+                labelId={props.id}
+                value={value}
+                onChange={onChange}
+                inputRef={selectRef}
+                {...props}
+                displayEmpty
+            >
+                <MenuItem value="" disabled hidden>
+                    {placeholder}
+                </MenuItem>
+                {options.map((option, index) => (
+                    <MenuItem key={index} value={option.value}>
+                        {option.label}
+                    </MenuItem>
+                ))}
+            </MuiSelect>
+        </FormControl>
     );
 };
 
