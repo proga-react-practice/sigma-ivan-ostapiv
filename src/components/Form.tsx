@@ -9,6 +9,7 @@ import {
     positiveIntegerPattern,
 } from "../utils/validationPatterns";
 import {InputLabel} from "@mui/material";
+import {SelectChangeEvent} from "@mui/material/Select";
 
 interface FormProps {
     setCardInfo: React.Dispatch<React.SetStateAction<CardProps[]>>;
@@ -76,7 +77,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
         }
     };
 
-    const handleFieldTypeChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const handleFieldTypeChange = (e: SelectChangeEvent<string>) => {
         const value = e.target.value;
         setFieldType(value);
         if (value.trim() === "") {
