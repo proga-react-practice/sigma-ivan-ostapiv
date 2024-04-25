@@ -8,8 +8,11 @@ import {
     specialCharsAndNumbers,
     positiveIntegerPattern,
 } from "../utils/validationPatterns";
-import {InputLabel} from "@mui/material";
+import {InputLabel, Typography, Stack} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material/Select";
+import ErrorIcon from "@mui/icons-material/Error";
+import AddIcon from "@mui/icons-material/Add";
+import ClearIcon from "@mui/icons-material/Clear";
 
 interface FormProps {
     setCardInfo: React.Dispatch<React.SetStateAction<CardProps[]>>;
@@ -168,7 +171,15 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         inputRef={stadiumNameRef}
                         onChange={handleStadiumNameChange}
                     />
-                    <div className="error-message">{stadiumNameError}</div>
+
+                    {stadiumNameError && (
+                        <Stack direction="row" gap={1}>
+                            <ErrorIcon fontSize="small" />
+                            <Typography variant="body2">
+                                {stadiumNameError}
+                            </Typography>
+                        </Stack>
+                    )}
                 </div>
                 <div className="input-container">
                     <InputLabel htmlFor="city">City:</InputLabel>
@@ -182,7 +193,12 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         inputRef={cityRef}
                         onChange={handleCityChange}
                     />
-                    <div className="error-message">{cityError}</div>
+                    {cityError && (
+                        <Stack direction="row" gap={1}>
+                            <ErrorIcon fontSize="small" />
+                            <Typography variant="body2">{cityError}</Typography>
+                        </Stack>
+                    )}
                 </div>
                 <div className="input-container">
                     <InputLabel htmlFor="capacity">Capacity:</InputLabel>
@@ -196,7 +212,14 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         inputRef={capacityRef}
                         onChange={handleCapacityChange}
                     />
-                    <div className="error-message">{capacityError}</div>
+                    {capacityError && (
+                        <Stack direction="row" gap={1}>
+                            <ErrorIcon fontSize="small" />
+                            <Typography variant="body2">
+                                {capacityError}
+                            </Typography>
+                        </Stack>
+                    )}
                 </div>
                 <div className="input-container select-container">
                     <InputLabel htmlFor="field-type">
@@ -212,7 +235,14 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         selectRef={fieldTypeRef}
                         value={fieldType}
                     />
-                    <div className="error-message">{fieldTypeError}</div>
+                    {fieldTypeError && (
+                        <Stack direction="row" gap={1}>
+                            <ErrorIcon fontSize="small" />
+                            <Typography variant="body2">
+                                {fieldTypeError}
+                            </Typography>
+                        </Stack>
+                    )}
                 </div>
                 <div className="form-buttons">
                     <div>
@@ -220,6 +250,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                             type="submit"
                             className="addButton"
                             onClick={handleSubmit}
+                            endIcon={<AddIcon />}
                         >
                             Add
                         </Button>
@@ -229,6 +260,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                             type="reset"
                             className="resetButton"
                             onClick={handleFormReset}
+                            endIcon={<ClearIcon />}
                         >
                             Reset
                         </Button>

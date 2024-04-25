@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export interface CardProps {
     stadiumName: string;
@@ -29,7 +30,11 @@ const Card: React.FC<CardProps> = ({
             <div className="card-item">Capacity - {capacity}</div>
             <div className="card-item">Field - {fieldType}</div>
             <div className="form-buttons card-button">
-                <Button type="button" onClick={handleRemove}>
+                <Button
+                    type="button"
+                    onClick={handleRemove}
+                    endIcon={<DeleteIcon />}
+                >
                     Remove
                 </Button>
             </div>
