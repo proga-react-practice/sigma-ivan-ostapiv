@@ -8,7 +8,7 @@ import {
     specialCharsAndNumbers,
     positiveIntegerPattern,
 } from "../utils/validationPatterns";
-import {InputLabel, Typography, Stack} from "@mui/material";
+import {InputLabel, Typography, Stack, Box, Paper} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material/Select";
 import ErrorIcon from "@mui/icons-material/Error";
 import AddIcon from "@mui/icons-material/Add";
@@ -156,10 +156,10 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     ];
 
     return (
-        <div className="form-container">
-            <h2>Stadium form</h2>
-            <form className="stadium-form">
-                <div className="input-container">
+        <Paper elevation={0} className="form-container">
+            <Typography variant="h4">Stadium form</Typography>
+            <Box component="form" className="stadium-form">
+                <Box className="input-container">
                     <InputLabel htmlFor="stadium-name">Stadium:</InputLabel>
                     <Input
                         type="text"
@@ -180,8 +180,8 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                             </Typography>
                         </Stack>
                     )}
-                </div>
-                <div className="input-container">
+                </Box>
+                <Box className="input-container">
                     <InputLabel htmlFor="city">City:</InputLabel>
                     <Input
                         type="text"
@@ -199,8 +199,8 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                             <Typography variant="body2">{cityError}</Typography>
                         </Stack>
                     )}
-                </div>
-                <div className="input-container">
+                </Box>
+                <Box className="input-container">
                     <InputLabel htmlFor="capacity">Capacity:</InputLabel>
                     <Input
                         type="number"
@@ -220,8 +220,8 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                             </Typography>
                         </Stack>
                     )}
-                </div>
-                <div className="input-container select-container">
+                </Box>
+                <Box className="input-container select-container">
                     <InputLabel htmlFor="field-type">
                         Choose field type:
                     </InputLabel>
@@ -243,31 +243,25 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                             </Typography>
                         </Stack>
                     )}
-                </div>
-                <div className="form-buttons">
-                    <div>
-                        <Button
-                            type="submit"
-                            className="addButton"
-                            onClick={handleSubmit}
-                            endIcon={<AddIcon />}
-                        >
-                            Add
-                        </Button>
-                    </div>
-                    <div>
-                        <Button
-                            type="reset"
-                            className="resetButton"
-                            onClick={handleFormReset}
-                            endIcon={<ClearIcon />}
-                        >
-                            Reset
-                        </Button>
-                    </div>
-                </div>
-            </form>
-        </div>
+                </Box>
+                <Box mt={3} display="flex" justifyContent="space-evenly">
+                    <Button
+                        type="submit"
+                        onClick={handleSubmit}
+                        endIcon={<AddIcon />}
+                    >
+                        Add
+                    </Button>
+                    <Button
+                        type="reset"
+                        onClick={handleFormReset}
+                        endIcon={<ClearIcon />}
+                    >
+                        Reset
+                    </Button>
+                </Box>
+            </Box>
+        </Paper>
     );
 };
 
