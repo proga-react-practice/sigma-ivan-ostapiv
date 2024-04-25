@@ -17,7 +17,7 @@ const Input: React.FC<InputProps & TextFieldProps> = ({
     inputRef,
     ...props
 }) => {
-    return <TextField {...props} ref={inputRef} onChange={onChange} />;
+    return <TextField {...props} inputRef={inputRef} onChange={onChange} />;
 };
 
 export default Input;
