@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Box, Slide} from "@mui/material";
 import Form from "./Form";
 import CardList from "./CardList";
 import {CardProps} from "./Card";
@@ -7,10 +8,26 @@ const Layout: React.FC = () => {
     const [cards, setCards] = useState<CardProps[]>([]);
 
     return (
-        <div className="layout-container">
-            <Form setCardInfo={setCards} />
-            <CardList cards={cards} />
-        </div>
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "space-evenly",
+                flexWrap: "wrap",
+                flexDirection: {xs: "column", sm: "row"},
+            }}
+            className="layout-container"
+        >
+            <Slide direction="left" in={true} timeout={1000}>
+                <Box sx={{flex: "1", padding: {xs: "0.5rem", sm: "2rem"}}}>
+                    <Form setCardInfo={setCards} />
+                </Box>
+            </Slide>
+            <Slide direction="right" in={true} timeout={1000}>
+                <Box sx={{flex: "2", padding: {xs: "0.5rem", sm: "2rem"}}}>
+                    <CardList cards={cards} />
+                </Box>
+            </Slide>
+        </Box>
     );
 };
 
