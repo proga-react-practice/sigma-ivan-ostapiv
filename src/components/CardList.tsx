@@ -2,16 +2,31 @@ import Card, {CardProps} from "./Card";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import {theme} from "../utils/theme";
 
 const CardList: React.FC<{cards: CardProps[]}> = ({cards}) => {
     return (
-        <Box>
+        <Box className="card-list">
             <Typography variant="h4">Stadium list</Typography>
-            <Box className="card-list">
+            <Container>
                 {cards.length > 0 ? (
-                    <Grid container spacing={1} sx={{width: "80%"}}>
+                    <Grid
+                        container
+                        spacing={1}
+                        columns={{xs: 1, md: 2, lg: 2}}
+                        sx={{
+                            overflowY: {sm: "auto"},
+                            maxHeight: "800px",
+                            "&::-webkit-scrollbar": {width: "0.4em"},
+                            "&::-webkit-scrollbar-thumb": {
+                                backgroundColor: theme.palette.primary.dark,
+                                borderRadius: "10px",
+                            },
+                        }}
+                    >
                         {cards.map((card, index) => (
-                            <Grid key={index} item lg={10}>
+                            <Grid key={index} item xs={0.98}>
                                 <Card {...card} />
                             </Grid>
                         ))}
@@ -19,7 +34,7 @@ const CardList: React.FC<{cards: CardProps[]}> = ({cards}) => {
                 ) : (
                     <Typography variant="h6">No cards available</Typography>
                 )}
-            </Box>
+            </Container>
         </Box>
     );
 };
