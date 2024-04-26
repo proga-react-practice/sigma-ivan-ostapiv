@@ -13,6 +13,7 @@ import {SelectChangeEvent} from "@mui/material/Select";
 import ErrorIcon from "@mui/icons-material/Error";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
+import {theme} from "../utils/theme";
 
 interface FormProps {
     setCardInfo: React.Dispatch<React.SetStateAction<CardProps[]>>;
@@ -156,10 +157,13 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     ];
 
     return (
-        <Paper elevation={0} className="form-container">
+        <Paper elevation={0} sx={{width: {xm: "100%", lg: "400px"}}}>
             <Typography variant="h4">Stadium form</Typography>
             <Box component="form" className="stadium-form">
-                <Box className="input-container">
+                <Box
+                    sx={{md: {minHeight: "105px"}}}
+                    className="input-container"
+                >
                     <InputLabel htmlFor="stadium-name">Stadium:</InputLabel>
                     <Input
                         type="text"
@@ -173,7 +177,11 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     />
 
                     {stadiumNameError && (
-                        <Stack direction="row" gap={1}>
+                        <Stack
+                            direction="row"
+                            gap={1}
+                            sx={{color: theme.palette.error.light}}
+                        >
                             <ErrorIcon fontSize="small" />
                             <Typography variant="body2">
                                 {stadiumNameError}
@@ -181,7 +189,10 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box className="input-container">
+                <Box
+                    sx={{md: {minHeight: "105px"}}}
+                    className="input-container"
+                >
                     <InputLabel htmlFor="city">City:</InputLabel>
                     <Input
                         type="text"
@@ -194,13 +205,20 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         onChange={handleCityChange}
                     />
                     {cityError && (
-                        <Stack direction="row" gap={1}>
+                        <Stack
+                            direction="row"
+                            gap={1}
+                            sx={{color: theme.palette.error.light}}
+                        >
                             <ErrorIcon fontSize="small" />
                             <Typography variant="body2">{cityError}</Typography>
                         </Stack>
                     )}
                 </Box>
-                <Box className="input-container">
+                <Box
+                    sx={{md: {minHeight: "105px"}}}
+                    className="input-container"
+                >
                     <InputLabel htmlFor="capacity">Capacity:</InputLabel>
                     <Input
                         type="number"
@@ -213,7 +231,13 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         onChange={handleCapacityChange}
                     />
                     {capacityError && (
-                        <Stack direction="row" gap={1}>
+                        <Stack
+                            direction="row"
+                            gap={1}
+                            sx={{
+                                color: theme.palette.error.light,
+                            }}
+                        >
                             <ErrorIcon fontSize="small" />
                             <Typography variant="body2">
                                 {capacityError}
@@ -221,7 +245,10 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box className="input-container select-container">
+                <Box
+                    sx={{md: {minHeight: "105px"}}}
+                    className="input-container select-container"
+                >
                     <InputLabel htmlFor="field-type">
                         Choose field type:
                     </InputLabel>
@@ -236,7 +263,11 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         value={fieldType}
                     />
                     {fieldTypeError && (
-                        <Stack direction="row" gap={1}>
+                        <Stack
+                            direction="row"
+                            gap={1}
+                            sx={{color: theme.palette.error.light}}
+                        >
                             <ErrorIcon fontSize="small" />
                             <Typography variant="body2">
                                 {fieldTypeError}
@@ -246,6 +277,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                 </Box>
                 <Box mt={3} display="flex" justifyContent="space-evenly">
                     <Button
+                        variant="contained"
                         type="submit"
                         onClick={handleSubmit}
                         endIcon={<AddIcon />}
@@ -253,6 +285,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         Add
                     </Button>
                     <Button
+                        variant="outlined"
                         type="reset"
                         onClick={handleFormReset}
                         endIcon={<ClearIcon />}
