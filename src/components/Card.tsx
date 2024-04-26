@@ -6,7 +6,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
 import {CardProps as MuiCardProps} from "@mui/material/Card";
-import {theme} from "../utils/theme";
 
 export interface CardProps {
     stadiumName: string;
@@ -30,24 +29,24 @@ const Card: React.FC<CardProps & Omit<MuiCardProps, "onClick">> = ({
     };
 
     return (
-        <MiuCard id={id} className="card-container" sx={{padding: "5px"}}>
-            <CardContent sx={{padding: "4px"}}>
-                <Typography variant="body1">Stadium - {stadiumName}</Typography>
-                <Typography variant="body1">City - {city}</Typography>
-                <Typography variant="body1">Capacity - {capacity}</Typography>
-                <Typography variant="body1">Field - {fieldType}</Typography>
+        <MiuCard className="card-container" id={id}>
+            <CardContent>
+                <Typography variant="body1" className="card-item">
+                    Stadium - {stadiumName}
+                </Typography>
+                <Typography variant="body1" className="card-item">
+                    City - {city}
+                </Typography>
+                <Typography variant="body1" className="card-item">
+                    Capacity - {capacity}
+                </Typography>
+                <Typography variant="body1" className="card-item">
+                    Field - {fieldType}
+                </Typography>
             </CardContent>
-            <CardActions sx={{paddingTop: 0}}>
+            <CardActions>
                 <Button
-                    sx={{
-                        backgroundColor: theme.palette.error.dark,
-                        "&:hover": {
-                            backgroundColor: theme.palette.error.main,
-                        },
-                    }}
-                    variant="contained"
                     type="button"
-                    size="small"
                     onClick={handleRemove}
                     endIcon={<DeleteIcon />}
                 >
