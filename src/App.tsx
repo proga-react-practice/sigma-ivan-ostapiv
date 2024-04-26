@@ -1,8 +1,14 @@
 import "./App.css";
 import Layout from "./components/Layout";
+import {ThemeProvider} from "@mui/material/styles";
+import {theme} from "./utils/theme";
 
 function App() {
-    return <Layout />;
+    return (
+        <ThemeProvider theme={theme}>
+            <Layout />
+        </ThemeProvider>
+    );
 }
 
 export default App;

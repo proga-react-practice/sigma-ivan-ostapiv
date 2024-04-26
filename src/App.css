@@ -3,13 +3,3 @@
     margin: 0 auto;
     padding: 2rem;
 }
-
-.card-list::-webkit-scrollbar {
-    background-color: #f0f0f0;
-    width: 5px;
-}
-
-.card-list::-webkit-scrollbar-thumb {
-    background-color: #10776b;
-    border-radius: 5px;
-}
