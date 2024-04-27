@@ -8,7 +8,7 @@ import {
     specialCharsAndNumbers,
     positiveIntegerPattern,
 } from "../utils/validationPatterns";
-import {InputLabel, Typography, Stack, Box, Paper} from "@mui/material";
+import {Typography, Stack, Box, Paper} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material/Select";
 import ErrorIcon from "@mui/icons-material/Error";
 import AddIcon from "@mui/icons-material/Add";
@@ -164,13 +164,13 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     sx={{md: {minHeight: "105px"}}}
                     className="input-container"
                 >
-                    <InputLabel htmlFor="stadium-name">Stadium:</InputLabel>
                     <Input
                         type="text"
                         id="stadium-name"
                         name="stadiumName"
                         className="stadium-input"
                         placeholder="Enter stadium name"
+                        label="Stadium"
                         value={stadiumName}
                         inputRef={stadiumNameRef}
                         onChange={handleStadiumNameChange}
@@ -193,13 +193,13 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     sx={{md: {minHeight: "105px"}}}
                     className="input-container"
                 >
-                    <InputLabel htmlFor="city">City:</InputLabel>
                     <Input
                         type="text"
                         id="city"
                         name="city"
                         className="stadium-input"
                         placeholder="Enter city"
+                        label="City"
                         value={city}
                         inputRef={cityRef}
                         onChange={handleCityChange}
@@ -219,13 +219,13 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     sx={{md: {minHeight: "105px"}}}
                     className="input-container"
                 >
-                    <InputLabel htmlFor="capacity">Capacity:</InputLabel>
                     <Input
                         type="number"
                         id="capacity"
                         name="capacity"
                         className="stadium-input"
                         placeholder="Enter stadium capacity"
+                        label="Capacity"
                         value={capacity}
                         inputRef={capacityRef}
                         onChange={handleCapacityChange}
@@ -249,14 +249,11 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     sx={{md: {minHeight: "105px"}}}
                     className="input-container select-container"
                 >
-                    <InputLabel htmlFor="field-type">
-                        Choose field type:
-                    </InputLabel>
                     <Select
                         id="field-type"
                         name="fieldType"
                         className="stadium-input stadium-select"
-                        placeholder="Choose type"
+                        placeholder="Field type"
                         options={fieldTypeOptions}
                         onChange={handleFieldTypeChange}
                         selectRef={fieldTypeRef}
