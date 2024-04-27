@@ -37,7 +37,7 @@ const Card: React.FC<CardProps & Omit<MuiCardProps, "onClick">> = ({
                 <Typography variant="body1">Capacity - {capacity}</Typography>
                 <Typography variant="body1">Field - {fieldType}</Typography>
             </CardContent>
-            <CardActions sx={{paddingTop: 0}}>
+            <CardActions sx={{paddingTop: 0, justifyContent: "flex-end"}}>
                 <Button
                     sx={{
                         backgroundColor: theme.palette.error.dark,
