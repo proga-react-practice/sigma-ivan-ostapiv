@@ -5,7 +5,6 @@ interface SelectProps {
     options: {label: string; value: string | number}[];
     value: string;
     placeholder: string;
-    className?: string;
     id?: string;
     name?: string;
     selectRef?: React.Ref<HTMLSelectElement>;

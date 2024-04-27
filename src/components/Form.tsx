@@ -159,16 +159,12 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     return (
         <Paper elevation={0} sx={{width: {xm: "100%", lg: "400px"}}}>
             <Typography variant="h4">Stadium form</Typography>
-            <Box component="form" className="stadium-form">
-                <Box
-                    sx={{md: {minHeight: "105px"}}}
-                    className="input-container"
-                >
+            <Box component="form">
+                <Box sx={{md: {minHeight: "105px"}}}>
                     <Input
                         type="text"
                         id="stadium-name"
                         name="stadiumName"
-                        className="stadium-input"
                         placeholder="Enter stadium name"
                         label="Stadium"
                         value={stadiumName}
@@ -189,15 +185,11 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box
-                    sx={{md: {minHeight: "105px"}}}
-                    className="input-container"
-                >
+                <Box sx={{md: {minHeight: "105px"}}}>
                     <Input
                         type="text"
                         id="city"
                         name="city"
-                        className="stadium-input"
                         placeholder="Enter city"
                         label="City"
                         value={city}
@@ -215,15 +207,11 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box
-                    sx={{md: {minHeight: "105px"}}}
-                    className="input-container"
-                >
+                <Box sx={{md: {minHeight: "105px"}}}>
                     <Input
                         type="number"
                         id="capacity"
                         name="capacity"
-                        className="stadium-input"
                         placeholder="Enter stadium capacity"
                         label="Capacity"
                         value={capacity}
@@ -245,14 +233,10 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box
-                    sx={{md: {minHeight: "105px"}}}
-                    className="input-container select-container"
-                >
+                <Box sx={{md: {minHeight: "105px"}}}>
                     <Select
                         id="field-type"
                         name="fieldType"
-                        className="stadium-input stadium-select"
                         placeholder="Field type"
                         options={fieldTypeOptions}
                         onChange={handleFieldTypeChange}

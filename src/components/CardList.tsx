@@ -7,7 +7,7 @@ import {theme} from "../utils/theme";
 
 const CardList: React.FC<{cards: CardProps[]}> = ({cards}) => {
     return (
-        <Box className="card-list">
+        <Box>
             <Typography variant="h4">Stadium list</Typography>
             <Container>
                 {cards.length > 0 ? (

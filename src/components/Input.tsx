@@ -4,7 +4,6 @@ import {ChangeEvent} from "react";
 interface InputProps {
     type: "text" | "number";
     placeholder?: string;
-    className?: string;
     id?: string;
     name?: string;
     inputRef?: React.Ref<HTMLInputElement>;

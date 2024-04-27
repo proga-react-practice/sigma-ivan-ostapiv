@@ -30,7 +30,7 @@ const Card: React.FC<CardProps & Omit<MuiCardProps, "onClick">> = ({
     };
 
     return (
-        <MiuCard id={id} className="card-container" sx={{padding: "5px"}}>
+        <MiuCard id={id} sx={{padding: "5px"}}>
             <CardContent sx={{padding: "4px"}}>
                 <Typography variant="body1">Stadium - {stadiumName}</Typography>
                 <Typography variant="body1">City - {city}</Typography>

@@ -15,7 +15,6 @@ const Layout: React.FC = () => {
                 flexWrap: "wrap",
                 flexDirection: {xs: "column", sm: "row"},
             }}
-            className="layout-container"
         >
             <Slide direction="left" in={true} timeout={1000}>
                 <Box sx={{flex: "1", padding: {xs: "0.5rem", sm: "2rem"}}}>

@@ -4,7 +4,6 @@ import MuiButton, {ButtonProps} from "@mui/material/Button";
 interface CustomButtonProps {
     type: "button" | "submit" | "reset";
     children: ReactNode;
-    className?: string;
     id?: string;
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
