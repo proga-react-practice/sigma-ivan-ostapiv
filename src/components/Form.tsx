@@ -275,12 +275,13 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box mt={3} display="flex" justifyContent="space-evenly">
+                <Box mt={3} display="flex">
                     <Button
                         variant="contained"
                         type="submit"
                         onClick={handleSubmit}
                         endIcon={<AddIcon />}
+                        sx={{flexGrow: 1}}
                     >
                         Add
                     </Button>
@@ -289,6 +290,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         type="reset"
                         onClick={handleFormReset}
                         endIcon={<ClearIcon />}
+                        sx={{flexGrow: 1}}
                     >
                         Reset
                     </Button>
