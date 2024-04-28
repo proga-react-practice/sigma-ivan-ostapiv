@@ -157,10 +157,10 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     ];
 
     return (
-        <Paper elevation={0} sx={{width: {xm: "100%", lg: "400px"}}}>
+        <Paper elevation={0} sx={{width: {xs: "100%", lg: "400px"}}}>
             <Typography variant="h4">Stadium form</Typography>
             <Box component="form">
-                <Box sx={{md: {minHeight: "105px"}}}>
+                <Box sx={{minHeight: "80px"}}>
                     <Input
                         type="text"
                         id="stadium-name"
@@ -185,7 +185,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box sx={{md: {minHeight: "105px"}}}>
+                <Box sx={{minHeight: "80px"}}>
                     <Input
                         type="text"
                         id="city"
@@ -207,7 +207,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box sx={{md: {minHeight: "105px"}}}>
+                <Box sx={{minHeight: "80px"}}>
                     <Input
                         type="number"
                         id="capacity"
@@ -233,7 +233,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box sx={{md: {minHeight: "105px"}}}>
+                <Box sx={{minHeight: "80px"}}>
                     <Select
                         id="field-type"
                         name="fieldType"
@@ -256,7 +256,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box mt={3} display="flex">
+                <Box sx={{position: "relative", minHeight: "105px"}}>
                     <Button
                         variant="contained"
                         type="submit"

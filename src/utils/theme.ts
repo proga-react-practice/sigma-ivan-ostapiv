@@ -19,7 +19,7 @@ const theme = createTheme({
     components: {
         MuiInputLabel: {
             styleOverrides: {
-                root: {fontSize: "20px", color: teal[900]},
+                root: {fontSize: "18px", color: teal[900]},
             },
         },
         MuiTextField: {
@@ -72,6 +72,7 @@ const theme = createTheme({
                         boxShadow: `0 0 10px ${teal[500]}`,
                         borderWidth: "3px",
                         transition: "border-color 0.5s, box-shadow 0.5s",
+                        transform: "translateY(-2px)",
                     },
                 },
                 notchedOutline: {

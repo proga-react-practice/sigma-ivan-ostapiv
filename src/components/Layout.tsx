@@ -17,12 +17,12 @@ const Layout: React.FC = () => {
             }}
         >
             <Slide direction="left" in={true} timeout={1000}>
-                <Box sx={{flex: "1", padding: {xs: "0.5rem", sm: "2rem"}}}>
+                <Box sx={{flex: "1", padding: {xs: 0, sm: "2rem"}}}>
                     <Form setCardInfo={setCards} />
                 </Box>
             </Slide>
             <Slide direction="right" in={true} timeout={1000}>
-                <Box sx={{flex: "2", padding: {xs: "0.5rem", sm: "2rem"}}}>
+                <Box sx={{flex: "2", padding: {xs: 0, sm: "2rem"}}}>
                     <CardList cards={cards} />
                 </Box>
             </Slide>

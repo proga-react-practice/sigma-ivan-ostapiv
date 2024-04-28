@@ -14,14 +14,14 @@ const CardList: React.FC<{cards: CardProps[]}> = ({cards}) => {
                     <Grid
                         container
                         spacing={1}
-                        columns={{xs: 1, md: 2, lg: 2}}
+                        columns={{xs: 1, md: 2}}
                         sx={{
                             overflowY: {sm: "auto"},
-                            maxHeight: "800px",
+                            maxHeight: "80vh",
                             "&::-webkit-scrollbar": {width: "0.4em"},
                             "&::-webkit-scrollbar-thumb": {
                                 backgroundColor: theme.palette.primary.dark,
-                                borderRadius: "10px",
+                                borderRadius: 1,
                             },
                         }}
                     >
