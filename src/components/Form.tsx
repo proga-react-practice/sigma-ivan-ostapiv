@@ -8,7 +8,14 @@ import {
     specialCharsAndNumbers,
     positiveIntegerPattern,
 } from "../utils/validationPatterns";
-import {Typography, Stack, Box, Paper} from "@mui/material";
+import {
+    Typography,
+    Stack,
+    Box,
+    Paper,
+    InputLabel,
+    FormControl,
+} from "@mui/material";
 import {SelectChangeEvent} from "@mui/material/Select";
 import ErrorIcon from "@mui/icons-material/Error";
 import AddIcon from "@mui/icons-material/Add";
@@ -234,27 +241,30 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                     )}
                 </Box>
                 <Box sx={{minHeight: "80px"}}>
-                    <Select
-                        id="field-type"
-                        name="fieldType"
-                        placeholder="Field type"
-                        options={fieldTypeOptions}
-                        onChange={handleFieldTypeChange}
-                        selectRef={fieldTypeRef}
-                        value={fieldType}
-                    />
-                    {fieldTypeError && (
-                        <Stack
-                            direction="row"
-                            gap={1}
-                            sx={{color: theme.palette.error.light}}
-                        >
-                            <ErrorIcon fontSize="small" />
-                            <Typography variant="body2">
-                                {fieldTypeError}
-                            </Typography>
-                        </Stack>
-                    )}
+                    <FormControl fullWidth>
+                        <InputLabel id="field-type">Field type</InputLabel>
+                        <Select
+                            id="field-type"
+                            name="fieldType"
+                            label="Field type"
+                            options={fieldTypeOptions}
+                            onChange={handleFieldTypeChange}
+                            selectRef={fieldTypeRef}
+                            value={fieldType}
+                        />
+                        {fieldTypeError && (
+                            <Stack
+                                direction="row"
+                                gap={1}
+                                sx={{color: theme.palette.error.light}}
+                            >
+                                <ErrorIcon fontSize="small" />
+                                <Typography variant="body2">
+                                    {fieldTypeError}
+                                </Typography>
+                            </Stack>
+                        )}
+                    </FormControl>
                 </Box>
                 <Box mt={3} display="flex">
                     <Button

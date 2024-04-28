@@ -1,10 +1,9 @@
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import MuiSelect, {SelectChangeEvent} from "@mui/material/Select";
 interface SelectProps {
     options: {label: string; value: string | number}[];
     value: string;
-    placeholder: string;
+    label: string;
     id?: string;
     name?: string;
     selectRef?: React.Ref<HTMLSelectElement>;
@@ -14,31 +13,29 @@ interface SelectProps {
 const Select: React.FC<SelectProps> = ({
     options,
     value,
-    placeholder,
+    label,
     onChange,
     selectRef,
     ...props
 }) => {
     return (
-        <FormControl fullWidth>
-            <MuiSelect
-                labelId={props.id}
-                value={value}
-                onChange={onChange}
-                inputRef={selectRef}
-                {...props}
-                displayEmpty
-            >
-                <MenuItem value="" disabled hidden>
-                    {placeholder}
+        <MuiSelect
+            labelId={props.id}
+            value={value}
+            onChange={onChange}
+            inputRef={selectRef}
+            {...props}
+            label={label}
+        >
+            <MenuItem value="" disabled hidden>
+                {label}
+            </MenuItem>
+            {options.map((option, index) => (
+                <MenuItem key={index} value={option.value}>
+                    {option.label}
                 </MenuItem>
-                {options.map((option, index) => (
-                    <MenuItem key={index} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
-            </MuiSelect>
-        </FormControl>
+            ))}
+        </MuiSelect>
     );
 };
 
