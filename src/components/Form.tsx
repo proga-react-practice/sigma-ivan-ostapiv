@@ -256,7 +256,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
                         </Stack>
                     )}
                 </Box>
-                <Box sx={{position: "relative", minHeight: "105px"}}>
+                <Box mt={3} display="flex">
                     <Button
                         variant="contained"
                         type="submit"
