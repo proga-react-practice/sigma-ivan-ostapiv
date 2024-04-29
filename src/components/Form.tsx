@@ -166,7 +166,7 @@ const Form: React.FC<FormProps> = ({setCardInfo}) => {
     return (
         <Paper elevation={0} sx={{width: {xs: "100%", lg: "400px"}}}>
             <Typography variant="h4">Stadium form</Typography>
-            <Box component="form">
+            <Box mt={1} component="form">
                 <Box sx={{minHeight: "80px"}}>
                     <Input
                         type="text"
