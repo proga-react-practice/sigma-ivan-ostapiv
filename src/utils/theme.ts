@@ -8,7 +8,7 @@ const theme = createTheme({
             main: "#10776b",
         },
         background: {
-            default: "#ffffff",
+            default: "#f0f8ff",
         },
         text: {
             primary: "#0C0C0C",
@@ -24,18 +24,18 @@ const theme = createTheme({
         },
         MuiTextField: {
             styleOverrides: {
-                root: {
+                root: ({theme}) => ({
                     width: "100%",
-                    backgroundColor: "#f0f8ff",
-                },
+                    backgroundColor: theme.palette.background.default,
+                }),
             },
         },
         MuiSelect: {
             styleOverrides: {
-                root: {
+                root: ({theme}) => ({
                     width: "100%",
-                    backgroundColor: "#f0f8ff",
-                },
+                    backgroundColor: theme.palette.background.default,
+                }),
                 icon: {
                     color: teal[500],
                 },
@@ -43,18 +43,18 @@ const theme = createTheme({
         },
         MuiCard: {
             styleOverrides: {
-                root: {
+                root: ({theme}) => ({
                     border: "2px solid #009879",
                     borderRadius: "5px",
                     padding: "10px",
                     marginBottom: "10px",
-                    backgroundColor: "#f0f8ff",
+                    backgroundColor: theme.palette.background.default,
                     boxShadow: "10px 7px 10px #20a78c",
                     transition: "box-shadow 0.3s",
                     "&:hover": {
                         boxShadow: "0px 0px 10px #20a78c",
                     },
-                },
+                }),
             },
         },
         MuiOutlinedInput: {
